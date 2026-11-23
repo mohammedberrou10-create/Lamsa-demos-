@@ -1,1 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>عيادة لطب الأسنان</title>
+<meta name="description" content="عيادة أسنان: فحص، تنظيف وتبييض، تقويم، زراعة. احجز موعدك عبر واتساب.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== ألوان الهوية: غيّرها هنا لتناسب كل عيادة ===== */
+:root{
+  --ink:#10343C;      /* النص والعناوين */
+  --teal:#1F7A80;     /* اللون الرئيسي */
+  --aqua:#D4EEEA;     /* خلفية فاتحة */
+  --mist:#F2F8F7;     /* خلفية الأقسام */
+  --paper:#FFFFFF;
+  --gold:#F0B545;     /* زر الحجز */
+  --gold-ink:#3A2A00;
+  --wa:#1FA855;
+  --line:#D5E4E2;
+  --head:'Reem Kufi','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  --body:'IBM Plex Sans Arabic',Tahoma,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.8;font-size:17px;padding-bottom:76px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,92%);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);line-height:1.35;font-weight:700}
+h2{font-size:clamp(1.6rem,4.5vw,2.3rem);margin-bottom:.4em}
+.lead{color:#3F5B61;max-width:56ch}
+
+/* أزرار */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.85em 1.5em;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;border:2px solid transparent;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{background:#f5c15e}
+.btn-line{border-color:var(--teal);color:var(--teal);background:transparent}
+.btn-line:hover{background:var(--aqua)}
+
+/* الشريط العلوي */
+.top{background:var(--mist)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:14px}
+.logo{display:flex;align-items:center;gap:.6em;font-family:var(--head);font-weight:700;font-size:1.15rem;text-decoration:none}
+.logo svg{width:34px;height:34px}
+.top .tel{font-weight:600;text-decoration:none;color:var(--teal);direction:ltr;white-space:nowrap;font-size:.95rem}
+.logo span{font-size:1rem;line-height:1.3}
+.top .wrap{gap:12px}
+
+/* الواجهة */
+.hero{background:var(--mist);position:relative;padding-top:18px}
+.hero .wrap{display:grid;gap:8px;align-items:center;padding-bottom:70px}
+.hero h1{font-size:clamp(2.6rem,10vw,4.6rem);color:var(--ink);margin-bottom:.25em}
+.hero p{font-size:1.1rem;color:#3F5B61;max-width:42ch;margin-bottom:1.4em}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px}
+.smile-art{width:100%;max-width:520px;justify-self:center}
+.t{fill:var(--aqua);stroke:#9BCBC5;stroke-width:3;animation:lit .7s ease forwards;animation-delay:calc(var(--i)*.14s + .3s)}
+@keyframes lit{to{fill:#fff;stroke:var(--teal)}}
+.spark{transform-origin:center;transform-box:fill-box;animation:pop .6s ease 1.5s both}
+@keyframes pop{from{opacity:0;transform:scale(.2) rotate(-40deg)}to{opacity:1;transform:none}}
+.curve{position:absolute;inset-inline:0;bottom:-1px;width:100%;height:60px;display:block}
+@media(min-width:820px){
+  .hero .wrap{grid-template-columns:1.1fr .9fr;gap:40px;padding-block:30px 100px}
+  .curve{height:90px}
+}
+
+/* الخدمات */
+section{padding-block:64px}
+.services ul{list-style:none;display:grid;gap:0 48px;margin-top:28px}
+.services li{padding:20px 0;border-top:1px solid var(--line)}
+.services li:last-child{border-bottom:1px solid var(--line)}
+.services h3{font-size:1.2rem;color:var(--teal);margin-bottom:.15em}
+.services p{color:#4A666C;font-size:.98rem}
+@media(min-width:720px){
+  .services ul{grid-template-columns:1fr 1fr}
+  .services li:nth-last-child(2){border-bottom:1px solid var(--line)}
+}
+
+/* قبل وبعد */
+.ba{background:var(--ink);color:#fff}
+.ba .lead{color:#B9D4D0}
+.ba h2{color:#fff}
+.slider{position:relative;margin-top:28px;border-radius:20px;overflow:hidden;background:#16464F;aspect-ratio:16/9;max-height:360px;width:100%;user-select:none;touch-action:pan-y}
+.slider svg{position:absolute;inset:0;width:100%;height:100%}
+.slider .after{clip-path:inset(0 calc(100% - var(--p,50%)) 0 0)}
+.slider .bar{position:absolute;top:0;bottom:0;left:var(--p,50%);width:3px;background:var(--gold);transform:translateX(-50%);pointer-events:none}
+.slider .bar::after{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(240,181,69,.3)}
+.slider input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.slider input:focus-visible + .bar::after{outline:3px solid #fff}
+.tag{position:absolute;top:12px;padding:.15em .8em;border-radius:999px;background:rgba(16,52,60,.8);font-size:.85rem;font-weight:600;pointer-events:none}
+.tag.l{left:12px}.tag.r{right:12px}
+.note{font-size:.85rem;color:#9CC0BB;margin-top:12px}
+
+/* لماذا نحن */
+.why .cols{display:grid;gap:28px;margin-top:28px}
+.why h3{font-size:1.15rem;margin-bottom:.2em}
+.why p{color:#4A666C;font-size:.98rem}
+@media(min-width:720px){
+  .why .cols{grid-template-columns:repeat(3,1fr)}
+  .why .cols>div{padding-inline-end:28px;border-inline-end:1px solid var(--line)}
+  .why .cols>div:last-child{border:0}
+}
+
+/* الأسئلة */
+.faq{background:var(--mist)}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+details:first-of-type{border-top:1px solid var(--line);margin-top:24px}
+summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--teal);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:10px;color:#4A666C;max-width:62ch}
+
+/* الموقع */
+.place .grid{display:grid;gap:32px;margin-top:24px}
+.hours{list-style:none}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.hours li span:last-child{font-weight:600;direction:ltr}
+.addr{font-size:1.1rem;margin-bottom:16px}
+@media(min-width:720px){.place .grid{grid-template-columns:1fr 1fr}}
+
+footer{background:var(--ink);color:#B9D4D0;padding-block:28px;font-size:.88rem}
+footer .proto{display:inline-block;margin-top:8px;color:#fff;opacity:.85}
+
+/* شريط الحجز السفلي */
+.dock{position:fixed;inset-inline:0;bottom:0;z-index:20;display:flex;gap:10px;padding:10px 4%;background:rgba(255,255,255,.96);border-top:1px solid var(--line);backdrop-filter:blur(6px)}
+.dock .btn{flex:1;padding:.75em 1em}
+.dock .wa{background:var(--wa);color:#fff}
+@media(min-width:820px){
+  .dock{inset-inline:auto;inset-inline-start:24px;bottom:24px;width:auto;border:0;background:none;padding:0;backdrop-filter:none}
+  .dock .call{display:none}
+  .dock .wa{box-shadow:0 8px 24px rgba(31,168,85,.35)}
+  body{padding-bottom:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .t{fill:#fff;stroke:var(--teal)}
+}
+</style>
+</head>
+<body>
+
+<!-- رموز SVG -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="tooth" d="M20 10C35 0 65 0 80 10C95 22 92 50 84 70C80 90 76 112 64 112C54 112 54 84 50 84C46 84 46 112 36 112C24 112 20 90 16 70C8 50 5 22 20 10Z"/>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 100 120" aria-hidden="true"><use href="#tooth" fill="#fff" stroke="#1F7A80" stroke-width="7"/></svg>
+      <span data-c="name">عيادة</span>
+    </a>
+    <a class="tel" data-href="tel" data-c="phone" href="#">—</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" style="padding-block:18px 0">
+  <div class="wrap">
+    <div>
+      <h1>ابتسامتك<br>تبدأ هنا</h1>
+      <p>فحص دقيق، شرح واضح لكل خطوة، وعلاج مريح في عيادة تحترم وقتك. <span data-c="city"></span>.</p>
+      <div class="acts">
+        <a class="btn btn-gold" data-href="wa" href="#">احجز موعدك عبر واتساب</a>
+        <a class="btn btn-line" data-href="tel" href="#">اتصل الآن</a>
+      </div>
+    </div>
+    <svg class="smile-art" viewBox="0 0 540 230" role="img" aria-label="رسم لابتسامة بيضاء">
+      <g id="smile"></g>
+      <path class="spark" d="M488 6 L493 26 L513 31 L493 36 L488 56 L483 36 L463 31 L483 26Z" fill="#F0B545"/>
+    </svg>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 Q720,140 1440,0 V90 H0Z" fill="#fff"/></svg>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <h2>الخدمات</h2>
+    <p class="lead">كل ما تحتاجه أسنانك في مكان واحد، من الفحص الدوري إلى التجميل والزراعة.</p>
+    <ul>
+      <li><h3>الفحص والتنظيف</h3><p>كشف مبكر للمشاكل وتنظيف الجير للحفاظ على صحة اللثة.</p></li>
+      <li><h3>تبييض الأسنان</h3><p>لون أفتح بجلسات آمنة تناسب حالة أسنانك.</p></li>
+      <li><h3>الحشوات التجميلية</h3><p>ترميم التسوس بلون يشبه لون سنّك الطبيعي.</p></li>
+      <li><h3>تقويم الأسنان</h3><p>تقويم ثابت أو شفاف لابتسامة منتظمة.</p></li>
+      <li><h3>زراعة الأسنان</h3><p>تعويض السن المفقود بحل ثابت يدوم.</p></li>
+      <li><h3>أسنان الأطفال</h3><p>استقبال لطيف للصغار وتعليمهم العناية بأسنانهم.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ba">
+  <div class="wrap">
+    <h2>شاهد الفرق</h2>
+    <p class="lead">حرّك المؤشر لترى كيف يغيّر التبييض لون الابتسامة.</p>
+    <div class="slider" id="slider" dir="ltr">
+      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" class="before" aria-hidden="true"><g class="row" data-fill="#E2C877" data-stroke="#B89A45"></g></svg>
+      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" class="after" aria-hidden="true"><g class="row" data-fill="#FFFFFF" data-stroke="#9BCBC5"></g></svg>
+      <span class="tag l">بعد</span><span class="tag r">قبل</span>
+      <input type="range" min="5" max="95" value="50" aria-label="قارن بين قبل وبعد التبييض">
+      <div class="bar"></div>
+    </div>
+    <p class="note">نموذج توضيحي للشرح. تختلف النتائج من حالة لأخرى بعد فحص الطبيب.</p>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <h2>لماذا نحن</h2>
+    <div class="cols">
+      <div><h3>شرح قبل العلاج</h3><p>نوضّح لك الحالة والخيارات والتكلفة قبل أن نبدأ، فتقرر وأنت مطمئن.</p></div>
+      <div><h3>تعقيم وراحة</h3><p>أدوات معقّمة ومقعد مريح وطاقم يهتم بتفاصيلك.</p></div>
+      <div><h3>مواعيد تحترم وقتك</h3><p>حجز سريع عبر واتساب وتذكير قبل الموعد.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2>أسئلة يطرحها المرضى</h2>
+    <details><summary>كم مرة يجب أن أزور طبيب الأسنان؟</summary><p>عادةً مرة كل 6 أشهر للفحص والتنظيف، وقد يحدد الطبيب مدة أقصر إن كانت حالتك تحتاج متابعة.</p></details>
+    <details><summary>هل التبييض مناسب للجميع؟</summary><p>يحتاج فحصًا أولًا، لأن بعض الحالات (كالتسوس أو حساسية الأسنان) تُعالَج قبل التبييض. يقرر الطبيب الأنسب لك.</p></details>
+    <details><summary>كم تستغرق مدة التقويم؟</summary><p>تختلف حسب الحالة، وتمتد غالبًا من أشهر إلى سنتين. يحدد الطبيب المدة بعد الفحص.</p></details>
+    <details><summary>كيف أحجز موعدًا؟</summary><p>أرسل لنا رسالة على واتساب أو اتصل بنا، وسنرد عليك لتحديد أقرب موعد مناسب.</p></details>
+  </div>
+</section>
+
+<section class="place" id="place">
+  <div class="wrap">
+    <h2>الموقع والمواعيد</h2>
+    <div class="grid">
+      <div>
+        <p class="addr" data-c="address"></p>
+        <a class="btn btn-line" data-href="map" href="#" target="_blank" rel="noopener">افتح الخريطة</a>
+      </div>
+      <ul class="hours" id="hours"></ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span data-c="name"></span></div>
+    <span class="proto">نموذج تصميمي أعدّته لمسة | Lamsa. الاسم والبيانات والصور للتوضيح فقط.</span>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn wa" data-href="wa" href="#">احجز عبر واتساب</a>
+  <a class="btn btn-line call" data-href="tel" href="#">اتصل</a>
+</div>
+
+<script>
+/* ===== بيانات العيادة: عدّل هذا القسم فقط عند تخصيص الصفحة ===== */
+const CLINIC = {
+  name: "عيادة الفجر لطب وجراحة الأسنان",   // اسم افتراضي، غيّره
+  city: "الجزائر العاصمة",
+  address: "الجزائر العاصمة، حي المثال، شارع المثال رقم 00",
+  phone: "0550 00 00 00",
+  whatsapp: "213550000000",               // بصيغة دولية بدون + ولا صفر البداية
+  mapQuery: "عيادة أسنان الجزائر العاصمة",
+  hours: [
+    ["الأحد - الخميس", "09:00 - 17:00"],
+    ["السبت", "09:00 - 13:00"],
+    ["الجمعة", "مغلق"]
+  ]
+};
+
+/* تعبئة البيانات */
+document.title = CLINIC.name;
+document.querySelectorAll('[data-c]').forEach(el => el.textContent = CLINIC[el.dataset.c]);
+const msg = encodeURIComponent("السلام عليكم، أريد حجز موعد في " + CLINIC.name);
+document.querySelectorAll('[data-href]').forEach(a => {
+  const k = a.dataset.href;
+  a.href = k === 'wa' ? `https://wa.me/${CLINIC.whatsapp}?text=${msg}`
+         : k === 'tel' ? `tel:+${CLINIC.whatsapp}`
+         : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC.mapQuery)}`;
+});
+document.getElementById('hours').innerHTML =
+  CLINIC.hours.map(h => `<li><span>${h[0]}</span><span>${h[1]}</span></li>`).join('');
+
+/* ابتسامة الواجهة: 7 أسنان على قوس */
+(function(){
+  const xs=[55,125,195,265,335,405,475], g=document.getElementById('smile');
+  g.innerHTML = xs.map((cx,i)=>{
+    const d=(cx-265)/220, cy=70+50*(1-d*d), r=d*12;
+    return `<use class="t" style="--i:${i}" href="#tooth" transform="translate(${cx},${cy+40}) rotate(${-r}) scale(.78,-.78) translate(-50,-60)"/>`;
+  }).join('');
+})();
+
+/* سلايدر قبل وبعد: 5 أسنان */
+(function(){
+  document.querySelectorAll('#slider .row').forEach(g=>{
+    const f=g.dataset.fill, s=g.dataset.stroke;
+    g.innerHTML = [0,1,2,3,4].map(i=>`<use href="#tooth" fill="${f}" stroke="${s}" stroke-width="3" transform="translate(${22+i*72},50) scale(.8)"/>`).join('');
+  });
+  const box=document.getElementById('slider'), input=box.querySelector('input');
+  const set=()=>box.style.setProperty('--p', input.value+'%');
+  input.addEventListener('input',set); set();
+})();
+</script>
+</body>
+</html>
 
